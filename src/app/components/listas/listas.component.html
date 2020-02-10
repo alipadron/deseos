@@ -1,5 +1,12 @@
 <ion-list color="dark">
-  <ion-item-sliding *ngFor="let lista of deseosService.listas">
+  <ion-item-sliding
+    *ngFor="let lista of deseosService.listas | filtroCompletado: terminada"
+  >
+    <ion-item-options side="start">
+      <ion-item-option (click)="editarLista(lista)">
+        <ion-icon name="create" slot="icon-only"></ion-icon>
+      </ion-item-option>
+    </ion-item-options>
     <ion-item detail color="dark" (click)="listaSeleccionada(lista)">
       <ion-label>{{ lista.titulo }}</ion-label>
       <ion-note slot="end" color="tertiary"
